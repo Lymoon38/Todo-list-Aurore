@@ -1,0 +1,98 @@
+/* Style général */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffaf0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to right, #f6d365, #fda085);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+header img.favicon {
+  width: 50px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+/* Zone d’ajout de tâches */
+.ajout-tache {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #fda085;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #f6b93b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e58e26;
+}
+
+/* Liste des tâches */
+#liste-taches {
+  display: flex;
+  justify-content: center;
+}
+
+#liste-taches ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 70%;
+  min-height: 50px;
+}
+
+#liste-taches li {
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #ffeaa7;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tache-barree {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.checkbox-tache {
+  margin-right: 10px;
+  transform: scale(1.2);
+  cursor: pointer;
+  accent-color: #f6b93b; /* jolie couleur pour la case */
+}
+
+#liste-taches li span.tache-barree {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.bouton-supprimer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #d63031;
+  cursor: pointer;
+}
