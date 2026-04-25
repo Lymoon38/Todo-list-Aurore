@@ -14,6 +14,11 @@ header {
   position: relative;
 }
 
+h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
 /* 🚐 VAN */
 header img.favicon {
   width: 50px;
