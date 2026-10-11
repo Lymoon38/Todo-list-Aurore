@@ -1,0 +1,372 @@
+/* Style général */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffaf0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to right, #f6d365, #fda085);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+/* 🚐 VAN */
+header img.favicon {
+  width: 50px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+/* Zone d’ajout */
+.ajout-tache {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #fda085;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #f6b93b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e58e26;
+}
+
+/* Liste */
+#liste-taches {
+  display: flex;
+  justify-content: center;
+}
+
+#liste-taches ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 70%;
+  min-height: 50px;
+}
+
+/* 🧱 ITEM */
+#liste-taches li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #ffeaa7;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* hover sympa */
+#liste-taches li:hover {
+  transform: scale(1.02);
+  background-color: #ffe082;
+}
+
+/* checkbox */
+.checkbox-tache {
+  transform: scale(1.2);
+  cursor: pointer;
+  accent-color: #f6b93b;
+}
+
+/* texte */
+.tache-barree {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ✏️ bouton edit */
+.bouton-edit {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ❌ bouton supprimer */
+.bouton-supprimer {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #d63031;
+  font-size: 18px;
+}
+
+/* 🎯 effet clic */
+.bouton-edit:active,
+.bouton-supprimer:active {
+  transform: scale(0.8);
+}
+
+/* ✏️ mode édition */
+.input-edit {
+  flex: 1;
+  padding: 6px;
+  border-radius: 5px;
+  border: 2px solid #f6b93b;
+  font-size: 1em;
+}
+
+/* 💨 animation suppression */
+.fade-out {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: 0.3s;
+}
+
+/* ==========================================================
+   NOUVEAUTÉS (micro, partage, message) — le reste est inchangé
+   ========================================================== */
+
+/* 🎤 bouton micro : même forme que le bouton ➕ */
+#micro {
+  background-color: #fda085;
+}
+
+#micro:hover {
+  background-color: #f6845f;
+}
+
+/* Pendant la dictée : le micro devient rouge et pulse doucement */
+#micro.ecoute {
+  background-color: #d63031;
+  animation: pulse-micro 1s ease-in-out infinite;
+}
+
+@keyframes pulse-micro {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+/* 📤 zone de partage sous la liste */
+.partage {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 20px;
+}
+
+.partage button {
+  font-size: 0.95em;
+}
+
+/* 🔔 message de confirmation en bas de l'écran */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  transform: translateX(-50%) translateY(20px);
+  max-width: 90%;
+  padding: 10px 18px;
+  background-color: #333;
+  color: white;
+  border-radius: 20px;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 📱 Sur petit écran, la liste prend plus de largeur */
+@media (max-width: 600px) {
+  #liste-taches ul { width: 92%; }
+  input[type="text"] { width: 55%; }
+}
+
+/* Respecte les personnes qui désactivent les animations */
+@media (prefers-reduced-motion: reduce) {
+  #micro.ecoute { animation: none; }
+}
+
+/* ==========================================================
+   NOUVEAUTÉS V2 : catégories, dates, filtres, glisser, outils
+   ========================================================== */
+
+/* Cache un élément (filtre, message vide). !important car les <li> ont display:flex */
+.cache {
+  display: none !important;
+}
+
+/* 🏷️ catégorie + date de la prochaine tâche */
+.options-tache {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -5px 20px 15px;
+}
+
+.options-tache select,
+.options-tache input[type="date"] {
+  padding: 8px;
+  border: 2px solid #fda085;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 0.95em;
+  color: #333;
+}
+
+/* 🔎 filtres */
+.filtres {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 20px 10px;
+}
+
+.filtre {
+  background-color: white;
+  color: #333;
+  border: 2px solid var(--couleur);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.9em;
+}
+
+.filtre:hover {
+  background-color: #fff3d6;
+}
+
+.filtre.actif {
+  background-color: var(--couleur);
+  color: white;
+}
+
+/* 📋 tâches : plus de place (2 lignes) + trait de couleur à gauche */
+#liste-taches li {
+  flex-wrap: wrap;
+  border-left: 6px solid var(--couleur, #e58e26);
+}
+
+.texte-tache {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* ⠿ poignée pour glisser */
+.poignee {
+  cursor: grab;
+  touch-action: none;     /* indispensable : empêche la page de défiler quand on glisse */
+  user-select: none;
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 2px;
+  color: #b8860b;
+}
+
+#liste-taches li.en-deplacement {
+  background-color: #ffd54f;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  transform: scale(1.03);
+  user-select: none;
+}
+
+/* ligne du bas : étiquette + date */
+.meta-tache {
+  flex: 1 0 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.85em;
+}
+
+.badge-cat {
+  background-color: var(--couleur, #e58e26);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.date-tache {
+  padding: 3px 6px;
+  border: 1px solid #fda085;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.etat-date {
+  font-weight: 600;
+}
+
+#liste-taches li.en-retard .date-tache {
+  border-color: #d63031;
+  color: #d63031;
+}
+
+#liste-taches li.en-retard .etat-date {
+  color: #d63031;
+}
+
+#liste-taches li.aujourdhui .etat-date {
+  color: #c06a00;
+}
+
+/* 🌴 message quand la liste est vide */
+#vide {
+  text-align: center;
+  opacity: 0.6;
+  margin: 20px;
+}
+
+/* 🧰 outils */
+.outils {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 20px 40px;
+}
+
+.outils button {
+  background-color: #fda085;
+  font-size: 0.9em;
+}
+
+.outils button:hover {
+  background-color: #f6845f;
+}
+
+/* Le clavier visible pour qui navigue sans écran tactile */
+.badge-cat:focus-visible,
+.filtre:focus-visible,
+button:focus-visible {
+  outline: 3px solid #333;
+  outline-offset: 2px;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo Aurore</title>
+
+  <!-- 📲 NOUVEAU : rend l'appli installable sur l'écran d'accueil -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#f6b93b" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="Images/van.png" />
+</head>
+
+<body>
+  <header>
+    <h1>🌺 To do list Aurore 🌺 </h1>
+
+    <!-- 🚐 van animé / logo -->
+    <img src="Images/van.png" alt="van Aurore" class="favicon" />
+
+    <!-- 💬 citation -->
+    <p id="citation"></p>
+  </header>
+
+  <main>
+
+    <!-- ➕ ajout tâche -->
+    <section class="ajout-tache">
+      <input 
+        type="text" 
+        id="nouvelle-tache" 
+        placeholder="Ajouter une tâche..." 
+        autocomplete="off"
+      />
+      <!-- 🎤 micro (dictée vocale). Caché automatiquement si le navigateur ne sait pas faire -->
+      <button id="micro" type="button" aria-label="Dicter une tâche" title="Dicter une tâche">🎤</button>
+      <button id="ajouter" aria-label="Ajouter la tâche">➕</button>
+    </section>
+
+    <!-- 🏷️ NOUVEAU : catégorie + date d'échéance de la prochaine tâche (la liste est remplie par script.js) -->
+    <section class="options-tache">
+      <select id="categorie-nouvelle" aria-label="Catégorie"></select>
+      <input type="date" id="date-nouvelle" aria-label="Date d'échéance (facultative)" />
+    </section>
+
+    <!-- 🔎 NOUVEAU : filtres par catégorie (boutons créés par script.js) -->
+    <section id="filtres" class="filtres" aria-label="Filtrer par catégorie"></section>
+
+    <!-- 📋 liste -->
+    <section id="liste-taches">
+      <ul></ul>
+    </section>
+    <p id="vide">Rien à faire pour l'instant 🌴</p>
+
+    <!-- 📤 partage / export de la liste -->
+    <section class="partage">
+      <button id="btn-partager" type="button">📤 Partager</button>
+      <button id="btn-sms" type="button">💬 SMS</button>
+      <button id="btn-whatsapp" type="button">🟢 WhatsApp</button>
+      <button id="btn-copier" type="button">📋 Copier</button>
+    </section>
+
+    <!-- 🧰 NOUVEAU : outils (ménage, sauvegarde, rappels, installation) -->
+    <section class="outils">
+      <button id="btn-nettoyer" type="button">🧹 Effacer les terminées</button>
+      <button id="btn-sauvegarder" type="button">💾 Sauvegarder</button>
+      <button id="btn-restaurer" type="button">📂 Restaurer</button>
+      <button id="btn-rappels" type="button">🔔 Activer les rappels</button>
+      <button id="btn-installer" type="button" hidden>📲 Installer l'appli</button>
+      <!-- champ caché : ouvert par le bouton "Restaurer" -->
+      <input type="file" id="fichier-restaurer" accept=".json,application/json" hidden />
+    </section>
+
+  </main>
+
+  <!-- 🔔 petit message de confirmation (ex: "Liste copiée !") -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- 🔊 son validation -->
+  <audio id="audio-valid" src="oiseau.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
