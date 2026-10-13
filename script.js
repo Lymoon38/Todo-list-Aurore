@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const CATEGORIES = [
     { id: 'general', nom: 'Général',        couleur: '#e58e26' },
     { id: 'courses', nom: 'Courses',        couleur: '#00916e' },
-    { id: 'van',     nom: 'Van',            couleur: '#0984e3' },
+    { id: 'rdv',     nom: 'Rdv',            couleur: '#0984e3' },
     { id: 'admin',   nom: 'Administratif',  couleur: '#6c5ce7' }
   ];
   // Retrouve une catégorie par son id (si inconnue → "Général")
