@@ -27,12 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
      Pour en ajouter ou renommer une, il suffit de modifier cette liste :
      le menu, les filtres et les couleurs se mettent à jour tout seuls.
      ========================================================== */
-  const CATEGORIES = [
+  const CATEGORIES = [ 
+    { id: 'autres',     nom: 'Autres',            couleur: '#00FFEF' },
     { id: 'administratif', nom: 'Administratif',        couleur: '#e58e26' },
     { id: 'courses', nom: 'Courses',        couleur: '#00916e' },
     { id: 'rdv',     nom: 'Rdv',            couleur: '#0984e3' },
+   
   ];
-  // Retrouve une catégorie par son id (si inconnue → "Général")
+  // Retrouve une catégorie par son id (si inconnue → "Autres")
   const catParId = id => CATEGORIES.find(c => c.id === id) || CATEGORIES[0];
 
   // Remplit le menu déroulant d'ajout
