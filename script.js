@@ -28,10 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
      le menu, les filtres et les couleurs se mettent à jour tout seuls.
      ========================================================== */
   const CATEGORIES = [
-    { id: 'general', nom: 'Général',        couleur: '#e58e26' },
+    { id: 'administratif', nom: 'Administratif',        couleur: '#e58e26' },
     { id: 'courses', nom: 'Courses',        couleur: '#00916e' },
     { id: 'rdv',     nom: 'Rdv',            couleur: '#0984e3' },
-    { id: 'admin',   nom: 'Administratif',  couleur: '#6c5ce7' }
   ];
   // Retrouve une catégorie par son id (si inconnue → "Général")
   const catParId = id => CATEGORIES.find(c => c.id === id) || CATEGORIES[0];
